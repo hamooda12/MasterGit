@@ -27,6 +27,26 @@ gitGraph
     branch release/v1.0.0
     checkout release/v1.0.0
     commit id: "Prepare release v1.0.0"
+    commit id: "Open PR to main"
+
+    checkout main
+    merge release/v1.0.0 id: "Release v1.0.0"
+
+    checkout develop
+    merge release/v1.0.0 id: "Sync release back to develop"
+
+    checkout main
+    branch hotfix/critical-fix
+    checkout hotfix/critical-fix
+    commit id: "Critical fix"
+    commit id: "Open PR to main"
+
+    checkout main
+    merge hotfix/critical-fix id: "Merge hotfix to main"
+
+    checkout develop
+    merge hotfix/critical-fix id: "Merge hotfix to develop"
+```
 
 ## Branch Rules
 
@@ -49,4 +69,3 @@ feature/logging
 release/v1.0.0
 hotfix/critical-fix
 ```
-
