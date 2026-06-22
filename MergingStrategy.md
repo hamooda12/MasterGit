@@ -8,7 +8,7 @@ GitHub provides three main strategies for merging pull requests:
 * Squash and Merge
 * Rebase and Merge
 
-Each strategy affects the Git history in a different way. Choosing the right strategy helps keep the repository organized and easy to understand.
+Each strategy affects the Git history in a different way.
 
 ## Example Scenario
 
@@ -18,7 +18,7 @@ Assume the `develop` branch has two commits:
 A -- B
 ```
 
-A new branch called `feature` is created from `develop`, and two commits are added:
+A new branch called `feature` is created from `develop`.
 
 ```text
 develop: A -- B
@@ -29,7 +29,9 @@ Now we want to merge `feature` into `develop`.
 
 ## 1. Merge Commit
 
-Merge Commit keeps all commits from the feature branch and adds a new merge commit.
+Merge Commit keeps all commits from the feature branch.
+
+It also adds a new merge commit.
 
 ```text
 develop after merge: A -- B -- C -- D -- M
@@ -37,25 +39,25 @@ develop after merge: A -- B -- C -- D -- M
 
 `M` is the merge commit.
 
-### Advantages
+### Merge Commit Advantages
 
 * Preserves the full commit history
 * Shows exactly when a branch was merged
 * Useful for teams that want detailed history
 
-### Disadvantages
+### Merge Commit Disadvantages
 
 * Can make the Git history messy
 * Adds extra merge commits
 * Harder to read when there are many branches
 
-### When to Use
+### Merge Commit Use Case
 
-Use Merge Commit when the team wants to keep the full history of all feature branch commits.
+Use Merge Commit when the team wants to keep the full history.
 
 ## 2. Squash and Merge
 
-Squash and Merge combines all commits from the feature branch into one commit.
+Squash and Merge combines all feature branch commits into one commit.
 
 ```text
 develop after merge: A -- B -- S
@@ -63,18 +65,18 @@ develop after merge: A -- B -- S
 
 `S` is a single commit that contains all changes from `C` and `D`.
 
-### Advantages
+### Squash Advantages
 
 * Keeps the branch history clean
 * Removes unnecessary small commits
 * Good for small features and fixes
 
-### Disadvantages
+### Squash Disadvantages
 
 * Loses the detailed commit history from the feature branch
 * Harder to inspect each small step later
 
-### When to Use
+### Squash Use Case
 
 Use Squash and Merge when you want a clean and simple history.
 
@@ -82,7 +84,7 @@ This is a good default choice for feature branches.
 
 ## 3. Rebase and Merge
 
-Rebase and Merge moves the feature branch commits on top of the latest commit in the base branch.
+Rebase and Merge moves feature commits on top of the base branch.
 
 ```text
 develop after merge: A -- B -- C' -- D'
@@ -90,21 +92,23 @@ develop after merge: A -- B -- C' -- D'
 
 `C'` and `D'` are new versions of the original commits.
 
-### Advantages
+### Rebase Advantages
 
 * Keeps a clean linear history
 * Preserves individual commits
 * Avoids extra merge commits
 
-### Disadvantages
+### Rebase Disadvantages
 
 * Commit hashes change
 * Can cause confusion if used incorrectly on shared branches
 * Requires more Git understanding
 
-### When to Use
+### Rebase Use Case
 
-Use Rebase and Merge when you want a linear history while keeping each commit separate.
+Use Rebase and Merge when you want a linear history.
+
+It keeps each commit separate.
 
 ## Recommended Strategy for This Project
 
@@ -114,17 +118,23 @@ For this project, the recommended strategy is:
 Squash and Merge
 ```
 
-This keeps the `develop`, `release`, and `main` branches clean and easy to read.
+This keeps the main branches clean and easy to read.
 
 ## Recommended Workflow
 
 ```text
 feature branch
-      ↓ Pull Request
+      ↓
+Pull Request
+      ↓
 develop
-      ↓ Pull Request
+      ↓
+Pull Request
+      ↓
 release/version
-      ↓ Pull Request
+      ↓
+Pull Request
+      ↓
 main
       ↓
 GitHub Release
@@ -152,12 +162,14 @@ v2.0.0
 
 ## Summary
 
-| Strategy         | History Style                         | Best For                 |
-| ---------------- | ------------------------------------- | ------------------------ |
-| Merge Commit     | Full history with merge commits       | Detailed team history    |
-| Squash and Merge | Clean single commit                   | Features and small fixes |
-| Rebase and Merge | Clean linear history with all commits | Advanced clean history   |
+| Strategy | Style | Best For |
+| --- | --- | --- |
+| Merge Commit | Full history | Team history |
+| Squash and Merge | Single commit | Small features |
+| Rebase and Merge | Linear history | Advanced history |
 
 ## Final Recommendation
 
-Use **Squash and Merge** for most pull requests in this project because it keeps the repository history clean and simple.
+Use **Squash and Merge** for most pull requests in this project.
+
+It keeps the repository history clean and simple.
