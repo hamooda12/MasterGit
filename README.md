@@ -1,4 +1,4 @@
-## Git Workflow Diagram
+# Git Workflow Diagram
 
 ```mermaid
 gitGraph
