@@ -5,6 +5,4 @@ public class Student {
     int age;
     String address;
     double mark;
-    String gender;
-    double weight;
 }
